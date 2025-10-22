@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mise en Place · Monday Recipe</title>
+<link rel="stylesheet" href="../styles/theme.css"/>
+</head>
+<body>
+  <div class="header">
+    <div class="brand">Mise en Place</div>
+    <nav class="nav">
+      <a href="../index.html">Weekly</a>
+      <a href="./shopping.html">Shopping</a>
+      <a href="./prep.html">Prep</a>
+    </nav>
+  </div>
+  <div class="container">
+    <div class="card">
+      <h2>Monday Dinner</h2>
+      <div id="recipe"></div>
+    </div>
+    <div class="card">
+      <h2>Daily Fuel</h2>
+      <div class="day-grid focus" id="mom-card"></div>
+    </div>
+  </div>
+  <script type="module" src="../js/app.js"></script>
+  <script src="../data/plan-2025-10-19.js"></script>
+  <script type="module">
+    import { dayCardHTML } from '../js/components.js';
+    const d = 'monday';
+    // Render dinner summary (placeholder uses recipe.summary if present)
+    const m = (planData.meals||{})[d] || {};
+    const title = m.title || 'No dinner planned';
+    const summary = (m.recipe && m.recipe.summary) ? m.recipe.summary : '';
+    document.querySelector('#recipe').innerHTML = `<div class="row"><div class="key">Title</div><div>${title}</div></div>${summary? `<div class="row"><div class="key">Notes</div><div class="muted">${summary}</div></div>`:''}`;
+    // Render mom day card
+    document.querySelector('#mom-card').innerHTML = dayCardHTML(d, planData);
+  </script>
+</body>
+</html>

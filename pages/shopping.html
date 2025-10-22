@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mise en Place · Shopping</title>
+<link rel="stylesheet" href="../styles/theme.css"/>
+</head>
+<body>
+  <div class="header">
+    <div class="brand">Mise en Place</div>
+    <nav class="nav">
+      <a href="../index.html">Weekly</a>
+      <a href="./prep.html">Prep</a>
+    </nav>
+  </div>
+  <div class="container">
+    <div class="card">
+      <h2>Consolidated Shopping List</h2>
+      <div id="list"></div>
+      <p class="muted">This page reads from <code>planData.shopping</code>. If empty, you’ll see a helpful message.</p>
+    </div>
+  </div>
+  <script src="../data/plan-2025-10-19.js"></script>
+  <script>
+    const host = document.querySelector('#list');
+    const s = (planData.shopping && planData.shopping["🛒 Consolidated Shopping List"]) || null;
+    if(!s){ host.innerHTML = '<p class="muted">No shopping items yet. When the generator adds Daily Fuel groceries, they will appear here automatically.</p>'; }
+    else{
+      const cats = s.lists || {};
+      host.innerHTML = Object.keys(cats).map(cat=>{
+        const items = cats[cat] || [];
+        return `<div class="card"><h3>${cat}</h3>${items.length? '<ul>'+items.map(i=> `<li>${i.text}</li>`).join('')+'</ul>' : '<p class="muted">No items</p>'}</div>`;
+      }).join('');
+    }
+  </script>
+</body>
+</html>

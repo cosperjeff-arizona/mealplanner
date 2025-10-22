@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mise en Place · Weekly Plan</title>
+<link rel="stylesheet" href="./styles/theme.css"/>
+</head>
+<body>
+  <div class="header">
+    <div class="brand">Mise en Place</div>
+    <nav class="nav">
+      <a href="./pages/shopping.html">Shopping</a>
+      <a href="./pages/prep.html">Prep</a>
+      <a href="./pages/recipe-monday.html">Recipes</a>
+    </nav>
+  </div>
+  <div class="container">
+    <div class="controls">
+      <button class="btn" data-action="all">All</button>
+      <button class="btn" data-day="sunday">Sun</button>
+      <button class="btn" data-day="monday">Mon</button>
+      <button class="btn" data-day="tuesday">Tue</button>
+      <button class="btn" data-day="wednesday">Wed</button>
+      <button class="btn" data-day="thursday">Thu</button>
+      <button class="btn" data-day="friday">Fri</button>
+      <button class="btn" data-day="saturday">Sat</button>
+      <button class="btn" data-action="today" title="Jump to today">Today</button>
+    </div>
+    <div class="day-grid" id="day-grid"></div>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+  <script src="./data/plan-2025-10-19.js"></script>
+  <script type="module">
+    import { renderAll, renderFocus, todayKey } from './js/components.js';
+    const grid = document.querySelector('#day-grid');
+
+    function setup(){
+      // Focus by default (today), exact behavior you requested
+      const today = todayKey() || 'sunday';
+      renderFocus(grid, planData, today);
+
+      document.querySelectorAll('.btn').forEach(btn=>{
+        if(btn.dataset.action==='all'){
+          btn.addEventListener('click', ()=> renderAll(grid, planData));
+        }else if(btn.dataset.action==='today'){
+          btn.addEventListener('click', ()=> renderFocus(grid, planData, todayKey() || 'sunday'));
+        }else if(btn.dataset.day){
+          btn.addEventListener('click', ()=> renderFocus(grid, planData, btn.dataset.day));
+        }
+      });
+    }
+    setup();
+  </script>
+</body>
+</html>
