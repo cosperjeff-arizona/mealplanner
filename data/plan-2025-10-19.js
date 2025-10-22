@@ -1,6 +1,8 @@
 const planData = {
   "title": "October 19, 2025",
   "meta": "5 meals • 2 adults + 1 toddler",
+  
+  // FIXED: Shopping should be directly under planData
   "shopping": {
     "🛒 Consolidated Shopping List": {
       "cols": 2,
@@ -47,29 +49,28 @@ const planData = {
       }
     }
   },
+  
   "prep": {
     "title": "Pre-Week Prep (30–45 minutes)",
     "intro": "A focused prep session to make weeknight cooking faster and easier.",
     "ingredients": [
       { "text": "Cook 3 cups rice (~9 cups cooked) and store in a sealed container for easy scooping.", "checked": false },
       { "text": "Wash and chop broccoli for Monday.", "checked": false },
-      { "text": "Assemble Tuesday’s Chicken & Rice Bake (stir together rice, soups, broth/water, seasonings; nestle chicken; cover and refrigerate).", "checked": false }
+      { "text": "Assemble Tuesday's Chicken & Rice Bake (stir together rice, soups, broth/water, seasonings; nestle chicken; cover and refrigerate).", "checked": false }
     ],
     "steps": []
   },
-  "meals": [
-    {
-      "day": "Sunday",
-      "date": "10/19/25",
-      "id": "sunday",
-      "name": "Air Fryer Chicken Nuggets with Sweet Potato Fries & Veggies",
-      "description": "A no-stress dinner after returning from Flagstaff. Minimal active time.",
-      "schedulingNotes": "Everything can be prepped or purchased ahead; ready in 15 minutes or less.",
-      "isSpecial": false,
+  
+  // FIXED: Changed from array to object with day keys
+  "meals": {
+    "sunday": {
+      "title": "Air Fryer Chicken Nuggets with Sweet Potato Fries & Veggies",
       "recipe": {
-        "cardTitle": "Chicken Nuggets & Fries",
         "title": "Air Fryer Chicken Nuggets with Sweet Potato Fries & Veggies",
-        "meta": "Prep: 5 min • Cook: 15–20 min • Equipment: Air fryer or oven",
+        "summary": "A no-stress dinner after returning from Flagstaff. Minimal active time.",
+        "notes": "Everything can be prepped or purchased ahead; ready in 15 minutes or less.",
+        "prep": "5 min",
+        "cook": "15–20 min",
         "ingredients": [
           "1 package chicken nuggets",
           "1 bag sweet potato fries",
@@ -84,18 +85,15 @@ const planData = {
         ]
       }
     },
-    {
-      "day": "Monday",
-      "date": "10/20/25",
-      "id": "monday",
-      "name": "Seared Chicken Thighs with Roasted Broccoli & Rice",
-      "description": "A quick and classic protein bowl with a simple pan sauce.",
-      "schedulingNotes": "Straightforward weeknight meal; ~30 minutes start to finish.",
-      "isSpecial": false,
+    
+    "monday": {
+      "title": "Seared Chicken Thighs with Roasted Broccoli & Rice",
       "recipe": {
-        "cardTitle": "Simple Chicken & Broccoli",
         "title": "Seared Chicken Thighs with Roasted Broccoli & Rice",
-        "meta": "Prep: 10 min • Cook: 25–30 min • Equipment: 12\" skillet + sheet pan",
+        "summary": "A quick and classic protein bowl with a simple pan sauce.",
+        "notes": "Straightforward weeknight meal; ~30 minutes start to finish.",
+        "prep": "10 min",
+        "cook": "25–30 min",
         "ingredients": [
           "1.5 lb boneless, skinless chicken thighs",
           "1 large head broccoli, cut into florets",
@@ -113,18 +111,15 @@ const planData = {
         ]
       }
     },
-    {
-      "day": "Tuesday",
-      "date": "10/21/25",
-      "id": "tuesday",
-      "name": "Make-Ahead Chicken & Rice Bake",
-      "description": "A comforting, fully hands-off casserole that Kathryn can bake while managing the kids. Assembled Monday night for an easy Tuesday dinner.",
-      "schedulingNotes": "Quartermaster away for work function (development day). Prep the casserole Monday night; refrigerate covered. Kathryn just bakes it Tuesday evening.",
-      "isSpecial": false,
+    
+    "tuesday": {
+      "title": "Make-Ahead Chicken & Rice Bake",
       "recipe": {
-        "cardTitle": "Chicken & Rice Bake",
         "title": "Make-Ahead Chicken & Rice Bake",
-        "meta": "Prep: 10 min (night before) • Cook: 1 hr • Equipment: 9x13 casserole dish, oven",
+        "summary": "A comforting, fully hands-off casserole that Kathryn can bake while managing the kids. Assembled Monday night for an easy Tuesday dinner.",
+        "notes": "Quartermaster away for work function (development day). Prep the casserole Monday night; refrigerate covered. Kathryn just bakes it Tuesday evening.",
+        "prep": "10 min (night before)",
+        "cook": "1 hr",
         "ingredients": [
           "1 lb boneless, skinless chicken thighs or breasts (uncooked)",
           "1 cup long-grain white rice (uncooked)",
@@ -147,28 +142,20 @@ const planData = {
         ]
       }
     },
-    {
-      "day": "Wednesday",
-      "date": "10/22/25",
-      "id": "wednesday",
-      "name": "Eating Out",
-      "description": "",
-      "schedulingNotes": "Family has swim lessons at 4:30pm.",
-      "isSpecial": true,
+    
+    "wednesday": {
+      "title": "Eating Out",
       "recipe": null
     },
-    {
-      "day": "Thursday",
-      "date": "10/23/25",
-      "id": "thursday",
-      "name": "Ground Beef Pasta with Simple Tomato Sauce",
-      "description": "A comforting, classic weeknight pasta dish.",
-      "schedulingNotes": "Quick to make and always a crowd-pleaser.",
-      "isSpecial": false,
+    
+    "thursday": {
+      "title": "Ground Beef Pasta with Simple Tomato Sauce",
       "recipe": {
-        "cardTitle": "Ground Beef Pasta",
         "title": "Ground Beef Pasta with Simple Tomato Sauce",
-        "meta": "Prep: 10 min • Cook: 20–25 min • Equipment: 12\" skillet + pot",
+        "summary": "A comforting, classic weeknight pasta dish.",
+        "notes": "Quick to make and always a crowd-pleaser.",
+        "prep": "10 min",
+        "cook": "20–25 min",
         "ingredients": [
           "1 lb ground beef (85/15)",
           "1 lb pasta (penne, rigatoni, or spaghetti)",
@@ -186,6 +173,81 @@ const planData = {
           "Drain pasta and toss with sauce. Garnish with Parmesan and herbs."
         ]
       }
+    },
+    
+    "friday": {
+      "title": "No meal planned"
+    },
+    
+    "saturday": {
+      "title": "No meal planned"
     }
-  ]
+  },
+  
+  // ADDED: momDaily structure for Daily Fuel sections
+  "momDaily": {
+    "sunday": {
+      "breakfast": "TBD",
+      "lunch": "TBD",
+      "snackAM": "TBD",
+      "snackPM": "TBD",
+      "kcalEstimate": "1600",
+      "proteinEstimate": "80g",
+      "notes": ""
+    },
+    "monday": {
+      "breakfast": "TBD",
+      "lunch": "TBD",
+      "snackAM": "TBD",
+      "snackPM": "TBD",
+      "kcalEstimate": "1600",
+      "proteinEstimate": "80g",
+      "notes": ""
+    },
+    "tuesday": {
+      "breakfast": "TBD",
+      "lunch": "TBD",
+      "snackAM": "TBD",
+      "snackPM": "TBD",
+      "kcalEstimate": "1600",
+      "proteinEstimate": "80g",
+      "notes": ""
+    },
+    "wednesday": {
+      "breakfast": "TBD",
+      "lunch": "TBD",
+      "snackAM": "TBD",
+      "snackPM": "TBD",
+      "kcalEstimate": "1600",
+      "proteinEstimate": "80g",
+      "notes": ""
+    },
+    "thursday": {
+      "breakfast": "TBD",
+      "lunch": "TBD",
+      "snackAM": "TBD",
+      "snackPM": "TBD",
+      "kcalEstimate": "1600",
+      "proteinEstimate": "80g",
+      "notes": ""
+    },
+    "friday": {
+      "breakfast": "TBD",
+      "lunch": "TBD",
+      "snackAM": "TBD",
+      "snackPM": "TBD",
+      "kcalEstimate": "1600",
+      "proteinEstimate": "80g",
+      "notes": ""
+    },
+    "saturday": {
+      "breakfast": "TBD",
+      "lunch": "TBD",
+      "snackAM": "TBD",
+      "snackPM": "TBD",
+      "kcalEstimate": "1600",
+      "proteinEstimate": "80g",
+      "notes": ""
+    }
+  }
 };
