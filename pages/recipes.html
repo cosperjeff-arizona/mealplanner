@@ -32,6 +32,7 @@
     </div>
     <div class="grid" id="grid"></div>
   </div>
+
   <script src="../data/plan-2025-10-19.js"></script>
   <script>
     const order=["sunday","monday","tuesday","wednesday","thursday","friday","saturday"];
@@ -39,7 +40,7 @@
     function card(d, meal){
       const r = meal.recipe || null;
       const title = meal.title || (r && r.title) || 'Untitled';
-      const summary = (r && (r.summary||r.notes)) || (meal.recipe && meal.recipe.title ? '' : (meal.recipe?'':'No details yet'));
+      const summary = (r && (r.summary||r.notes)) || '';
       const href = `./recipe-${d}.html`;
       return `<article class="item">
         <header><div class="daychip">${cap(d)}</div><a href="${href}">Open</a></header>

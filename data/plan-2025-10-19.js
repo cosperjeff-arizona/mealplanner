@@ -1,5 +1,3 @@
-
-// Sample plan with momDaily + minimal shopping/prep to show pages working
 const planData = {
   dailyFuelConfig: {
     enabled: true,
@@ -12,12 +10,40 @@ const planData = {
   },
   meals: {
     sunday:   { id:"sunday",   title:"Air Fryer Nuggets + Veg", recipe:{summary:"Ultra low effort Sunday catch-up"} },
-    monday:   { id:"monday",   title:"Chicken & Broccoli Rice Bowls", recipe:{summary:"Pan-seared thighs, garlicky rice"} },
+    monday:   { id:"monday",   title:"Chicken & Broccoli Rice Bowls", recipe:{
+      title:"Chicken & Broccoli Rice Bowls",
+      summary:"Pan-seared thighs, garlicky rice",
+      yield:"Serves 4",
+      prepTime:"10 min", cookTime:"20 min",
+      ingredients:[
+        "1 lb chicken thighs","2 cups broccoli florets","2 cups cooked rice",
+        "2 cloves garlic, minced","1 tbsp oil","Salt & pepper"
+      ],
+      steps:[
+        "Season and sear chicken 5–6 min/side.",
+        "Steam broccoli until tender-crisp.",
+        "Sauté garlic briefly; toss with rice.",
+        "Slice chicken, assemble bowls."
+      ],
+      equipment:["12\" skillet","Steamer basket","Saucepan"]
+    }},
     tuesday:  { id:"tuesday",  title:"Team Dinner (out)", recipe:{summary:"No home cook"} },
-    wednesday:{ id:"wednesday",title:"Swim Night (out)", recipe:{summary:"No home cook"} },
-    thursday: { id:"thursday", title:"Ground Beef Pasta", recipe:{summary:"Weeknight classic"} },
-    friday:   { id:"friday",   title:"Out of Town", recipe:{summary:""} },
-    saturday: { id:"saturday", title:"Out of Town", recipe:{summary:""} }
+    wednesday:{ id:"wednesday",title:"Swim Night (out)",  recipe:{summary:"No home cook"} },
+    thursday: { id:"thursday", title:"Ground Beef Pasta", recipe:{
+      title:"Ground Beef Pasta",
+      summary:"Weeknight classic",
+      ingredients:[
+        {section:"Pasta", items:["12 oz penne","Salted water"]},
+        {section:"Sauce", items:["1 lb ground beef","1 jar marinara","1/2 cup pasta water"]}
+      ],
+      steps:[
+        {text:"Boil pasta in salted water until al dente.", time:"10 min"},
+        {text:"Brown beef; drain fat.", time:"8 min"},
+        {text:"Add marinara + pasta water; simmer.", time:"5 min"}
+      ]
+    }},
+    friday:   { id:"friday",   title:"Out of Town" },
+    saturday: { id:"saturday", title:"Out of Town" }
   },
   momDaily: {
     sunday:    {breakfast:"SEC muffin on whole-wheat", lunch:"Leftover chicken bowl", snackAM:"Boiled eggs", snackPM:"Apple + PB", kcalEstimate:2150, proteinEstimate:"100–120 g", notes:"Use iodized salt"},

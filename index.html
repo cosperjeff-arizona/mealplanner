@@ -5,16 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Mise en Place · Weekly Plan</title>
 <link rel="stylesheet" href="./styles/theme.css"/>
+<link rel="stylesheet" href="./styles/print.css" media="print"/>
 </head>
 <body>
   <div class="header">
     <div class="brand">Mise en Place</div>
     <nav class="nav">
+      <a href="./pages/recipes.html">Recipes</a>
       <a href="./pages/shopping.html">Shopping</a>
       <a href="./pages/prep.html">Prep</a>
-      <a href="./pages/recipe-monday.html">Recipes</a>
     </nav>
   </div>
+
   <div class="container">
     <div class="controls">
       <button class="btn" data-action="all">All</button>
@@ -37,7 +39,7 @@
     const grid = document.querySelector('#day-grid');
 
     function setup(){
-      // Focus by default (today), exact behavior you requested
+      // Focus by default (today)
       const today = todayKey() || 'sunday';
       renderFocus(grid, planData, today);
 
