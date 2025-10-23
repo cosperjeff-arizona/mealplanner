@@ -7,6 +7,17 @@ class WeekManager {
     this.planData = null;
   }
 
+  // Determine correct path to data folder based on current page location
+  getDataPath() {
+    const path = window.location.pathname;
+    // If we're in a pages/ subdirectory, go up one level
+    if (path.includes('/pages/')) {
+      return '../data/';
+    }
+    // Otherwise we're at root level
+    return './data/';
+  }
+
   // Get week ID from URL parameter or localStorage or default
   getCurrentWeekId() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -43,19 +54,32 @@ class WeekManager {
     }
 
     try {
-      // Dynamically load the plan file
+      // Dynamically load the plan file with correct path
       const script = document.createElement('script');
-      script.src = `../data/${week.file}`;
+      script.src = `${this.getDataPath()}${week.file}`;
+      
+      console.log(`Loading plan from: ${script.src}`); // Debug log
       
       // Wait for script to load
       await new Promise((resolve, reject) => {
-        script.onload = resolve;
-        script.onerror = reject;
+        script.onload = () => {
+          console.log('Plan loaded successfully');
+          resolve();
+        };
+        script.onerror = () => {
+          console.error(`Failed to load: ${script.src}`);
+          reject();
+        };
         document.head.appendChild(script);
       });
 
       this.currentWeek = weekId;
       this.planData = window.planData;
+      
+      if (!this.planData) {
+        console.error('planData is undefined after loading script');
+        return false;
+      }
       
       // Save to localStorage
       localStorage.setItem('selectedWeek', weekId);
@@ -158,12 +182,23 @@ window.weekManager = new WeekManager();
 
 // Initialize on page load
 window.addEventListener('DOMContentLoaded', async () => {
+  console.log('Week manager initializing...'); // Debug log
   const weekId = window.weekManager.getCurrentWeekId();
-  await window.weekManager.loadWeek(weekId);
-  window.weekManager.insertWeekNav();
+  console.log(`Selected week: ${weekId}`); // Debug log
   
-  // Trigger any page-specific initialization
-  if (window.onPlanDataLoaded) {
-    window.onPlanDataLoaded();
+  const loaded = await window.weekManager.loadWeek(weekId);
+  
+  if (loaded) {
+    window.weekManager.insertWeekNav();
+    
+    // Trigger any page-specific initialization
+    if (window.onPlanDataLoaded) {
+      console.log('Calling onPlanDataLoaded...'); // Debug log
+      window.onPlanDataLoaded();
+    } else {
+      console.warn('onPlanDataLoaded callback not found');
+    }
+  } else {
+    console.error('Failed to load week data');
   }
 });
