@@ -224,3 +224,4 @@ const planData = {
     ]
   }
 };
+window.planData = planData;
