@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Mise en Place · Prep</title>
 <link rel="stylesheet" href="../styles/theme.css"/>
+<link rel="stylesheet" href="../styles/week-nav.css"/>
 <link rel="stylesheet" href="../styles/print.css" media="print"/>
 </head>
 <body>
@@ -25,18 +26,24 @@
     </div>
   </div>
 
-  <script src="../data/plan-2025-10-19.js"></script>
+  <script src="../data/weeks.js"></script>
+  <script src="../js/week-loader.js"></script>
   <script>
-    const host = document.querySelector('#prep');
-    const p = planData.prep || null;
-    if(!p){
-      host.innerHTML = '<p class="muted">No prep steps yet. When the generator adds Sunday batch-prep (eggs, overnight oats, cut veg), it will display here.</p>';
-    }else{
-      const ing = (p.ingredients||[]).map(i=> `<li>${i}</li>`).join('');
-      const steps = (p.steps||[]).map((s,i)=> `<li><strong>Step ${i+1}:</strong> ${s}</li>`).join('');
-      host.innerHTML = `<div class="card"><h3>Ingredients</h3>${ing? '<ul>'+ing+'</ul>':'<p class="muted">None</p>'}</div>
-                        <div class="card"><h3>Steps</h3>${steps? '<ol>'+steps+'</ol>':'<p class="muted">None</p>'}</div>`;
+    function renderPrep() {
+      const host = document.querySelector('#prep');
+      const p = window.planData.prep || null;
+      if(!p){
+        host.innerHTML = '<p class="muted">No prep steps yet. When the generator adds Sunday batch-prep (eggs, overnight oats, cut veg), it will display here.</p>';
+      }else{
+        const ing = (p.ingredients||[]).map(i=> `<li>${i.text || i}</li>`).join('');
+        const steps = (p.steps||[]).map((s,i)=> `<li><strong>Step ${i+1}:</strong> ${s}</li>`).join('');
+        host.innerHTML = `<div class="card"><h3>Ingredients</h3>${ing? '<ul>'+ing+'</ul>':'<p class="muted">None</p>'}</div>
+                          <div class="card"><h3>Steps</h3>${steps? '<ol>'+steps+'</ol>':'<p class="muted">None</p>'}</div>`;
+      }
     }
+    
+    // Wait for plan data to be loaded
+    window.onPlanDataLoaded = renderPrep;
   </script>
 </body>
 </html>
