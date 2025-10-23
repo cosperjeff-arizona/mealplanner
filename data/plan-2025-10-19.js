@@ -1,253 +1,226 @@
+// data/plan-2025-10-19.js
+// Weekly plan with integrated Daily Fuel (momDaily) for a breastfeeding mom.
+// Focus: whole foods, low effort, no big deficits; SEC breakfast 4x this week.
+
 const planData = {
-  "title": "October 19, 2025",
-  "meta": "5 meals • 2 adults + 1 toddler",
-  
-  // FIXED: Shopping should be directly under planData
-  "shopping": {
-    "🛒 Consolidated Shopping List": {
-      "cols": 2,
-      "lists": {
-        "Produce": [
-          { "text": "1 large head broccoli", "checked": false },
-          { "text": "3–4 cloves garlic", "checked": false },
-          { "text": "1 bunch parsley or basil (for pasta garnish, optional)", "checked": false }
-        ],
-        "Meat & Seafood": [
-          { "text": "1.5 lb boneless, skinless chicken thighs (Monday)", "checked": false },
-          { "text": "1 lb chicken (thighs or breasts) for Tuesday casserole", "checked": false },
-          { "text": "1 lb ground beef (85/15)", "checked": false },
-          { "text": "1 package chicken nuggets (frozen or fresh)", "checked": false }
-        ],
-        "Dairy & Eggs": [
-          { "text": "Parmesan cheese (for pasta garnish)", "checked": false },
-          { "text": "Butter", "checked": false },
-          { "text": "Shredded cheese (for casserole topping, optional)", "checked": false }
-        ],
-        "Bakery": [
-          { "text": "1 pack high-quality hamburger or sandwich rolls (optional, for easy sides)", "checked": false }
-        ],
-        "Rice, Pasta & Grains": [
-          { "text": "Jasmine or sushi rice (restock if needed)", "checked": false },
-          { "text": "1 lb pasta (penne, rigatoni, or spaghetti)", "checked": false },
-          { "text": "Long-grain white rice (ensure at least 1 cup for casserole if not using above)", "checked": false }
-        ],
-        "Frozen": [
-          { "text": "1 bag sweet potato fries", "checked": false },
-          { "text": "1 bag of frozen veggies (e.g., peas, mixed veg, or green beans)", "checked": false }
-        ],
-        "Pantry & Condiments": [
-          { "text": "1 can cream of chicken soup", "checked": false },
-          { "text": "1 can cream of mushroom soup (or use a second cream of chicken)", "checked": false },
-          { "text": "Garlic powder", "checked": false },
-          { "text": "Onion powder", "checked": false },
-          { "text": "Olive oil", "checked": false },
-          { "text": "Neutral oil (for searing)", "checked": false },
-          { "text": "Salt & black pepper", "checked": false },
-          { "text": "Dried Italian seasoning or oregano", "checked": false },
-          { "text": "1 jar or can of good-quality tomato sauce or crushed tomatoes", "checked": false }
-        ]
-      }
+  title: "Weekly Plan",
+  meta: {
+    weekOf: "2025-10-19",
+    notes: "Daily Fuel added; SEC breakfast 4x this week; easy lunches & snacks; kcal targets maintain supply."
+  },
+
+  // Config that your generator can read if needed
+  dailyFuelConfig: {
+    enabled: true,
+    kcalMode: "auto",                   // allow generator to compute ~2,150–2,350 kcal/day
+    userTarget: null,
+    proteinTargetGPerKg: 1.3,           // helpful range 1.1–1.5 g/kg while breastfeeding
+    breakfastPreference: {
+      sausageEggCheeseEnglishMuffin: { enabled: true, targetPerWeek: 4 } // SEC 4x
     }
   },
-  
-  "prep": {
-    "title": "Pre-Week Prep (30–45 minutes)",
-    "intro": "A focused prep session to make weeknight cooking faster and easier.",
-    "ingredients": [
-      { "text": "Cook 3 cups rice (~9 cups cooked) and store in a sealed container for easy scooping.", "checked": false },
-      { "text": "Wash and chop broccoli for Monday.", "checked": false },
-      { "text": "Assemble Tuesday's Chicken & Rice Bake (stir together rice, soups, broth/water, seasonings; nestle chicken; cover and refrigerate).", "checked": false }
-    ],
-    "steps": []
-  },
-  
-  // FIXED: Changed from array to object with day keys
-  "meals": {
-    "sunday": {
-      "title": "Air Fryer Chicken Nuggets with Sweet Potato Fries & Veggies",
-      "recipe": {
-        "title": "Air Fryer Chicken Nuggets with Sweet Potato Fries & Veggies",
-        "summary": "A no-stress dinner after returning from Flagstaff. Minimal active time.",
-        "notes": "Everything can be prepped or purchased ahead; ready in 15 minutes or less.",
-        "prep": "5 min",
-        "cook": "15–20 min",
-        "ingredients": [
-          "1 package chicken nuggets",
-          "1 bag sweet potato fries",
-          "1 bag frozen veggies (or fresh, prepped ahead)",
-          "Optional dipping sauces: ketchup, honey mustard, BBQ"
-        ],
-        "steps": [
-          "Preheat air fryer or oven to 400°F.",
-          "Cook nuggets and fries according to package directions, flipping halfway for crispness.",
-          "Microwave or steam frozen veggies until hot.",
-          "Serve everything on a tray for easy cleanup."
-        ]
-      }
-    },
-    
-    "monday": {
-      "title": "Seared Chicken Thighs with Roasted Broccoli & Rice",
-      "recipe": {
-        "title": "Seared Chicken Thighs with Roasted Broccoli & Rice",
-        "summary": "A quick and classic protein bowl with a simple pan sauce.",
-        "notes": "Straightforward weeknight meal; ~30 minutes start to finish.",
-        "prep": "10 min",
-        "cook": "25–30 min",
-        "ingredients": [
-          "1.5 lb boneless, skinless chicken thighs",
-          "1 large head broccoli, cut into florets",
-          "4 cups cooked rice, warmed",
-          "2 tbsp olive oil, divided",
-          "1–2 cloves garlic, minced",
-          "1/4 cup chicken broth",
-          "Salt & black pepper"
-        ],
-        "steps": [
-          "Preheat oven to 425°F (convection if available). Toss broccoli with 1 tbsp olive oil, salt, and pepper. Roast 15–20 minutes.",
-          "Pat chicken thighs dry and season generously. Sear in 1 tbsp oil over medium-high heat for 4–5 minutes per side until cooked through.",
-          "Remove chicken. Lower heat, add garlic, sauté briefly, then deglaze with chicken broth. Simmer for 1 minute.",
-          "Serve chicken over rice with roasted broccoli, spooning sauce over top."
-        ]
-      }
-    },
-    
-    "tuesday": {
-      "title": "Make-Ahead Chicken & Rice Bake",
-      "recipe": {
-        "title": "Make-Ahead Chicken & Rice Bake",
-        "summary": "A comforting, fully hands-off casserole that Kathryn can bake while managing the kids. Assembled Monday night for an easy Tuesday dinner.",
-        "notes": "Quartermaster away for work function (development day). Prep the casserole Monday night; refrigerate covered. Kathryn just bakes it Tuesday evening.",
-        "prep": "10 min (night before)",
-        "cook": "1 hr",
-        "ingredients": [
-          "1 lb boneless, skinless chicken thighs or breasts (uncooked)",
-          "1 cup long-grain white rice (uncooked)",
-          "1 can cream of chicken soup",
-          "1 can cream of mushroom soup (or double chicken if preferred)",
-          "1½ cups water or chicken broth",
-          "1 tsp garlic powder",
-          "½ tsp onion powder",
-          "Salt & black pepper to taste",
-          "Optional: ½ cup frozen peas or green beans",
-          "½ cup shredded cheese (for topping, optional)"
-        ],
-        "steps": [
-          "Lightly grease a 9x13 casserole dish.",
-          "Add uncooked rice, both soups, water or broth, garlic powder, onion powder, salt, and pepper. Stir until evenly combined.",
-          "Nestle the chicken pieces into the mixture and spoon a bit of sauce over each.",
-          "Cover tightly with foil and refrigerate overnight.",
-          "On Tuesday evening, bake covered at 375°F for 1 hour. Uncover, sprinkle cheese on top, and bake 5–10 minutes more until melted and bubbly.",
-          "Serve with microwaved or steamable veggies and bread, if desired."
-        ]
-      }
-    },
-    
-    "wednesday": {
-      "title": "Eating Out",
-      "recipe": null
-    },
-    
-    "thursday": {
-      "title": "Ground Beef Pasta with Simple Tomato Sauce",
-      "recipe": {
-        "title": "Ground Beef Pasta with Simple Tomato Sauce",
-        "summary": "A comforting, classic weeknight pasta dish.",
-        "notes": "Quick to make and always a crowd-pleaser.",
-        "prep": "10 min",
-        "cook": "20–25 min",
-        "ingredients": [
-          "1 lb ground beef (85/15)",
-          "1 lb pasta (penne, rigatoni, or spaghetti)",
-          "1 jar or can tomato sauce or crushed tomatoes",
-          "3 cloves garlic, minced",
-          "1 tsp dried Italian seasoning",
+
+  // Dinners (unchanged from your working week; adjust as needed)
+  meals: {
+    sunday:    { id:"sunday",    title:"Air Fryer Nuggets + Veg", recipe:{ summary:"Ultra low-effort Sunday catch-up" } },
+    monday:    { id:"monday",    title:"Chicken & Broccoli Rice Bowls", recipe:{
+      title:"Chicken & Broccoli Rice Bowls",
+      summary:"Pan-seared thighs, garlicky rice",
+      yield:"Serves 4",
+      prepTime:"10 min", cookTime:"20 min",
+      ingredients:[
+        "1 lb chicken thighs","2 cups broccoli florets","2 cups cooked rice",
+        "2 cloves garlic, minced","1 tbsp oil","Salt & pepper"
+      ],
+      steps:[
+        "Season and sear chicken 5–6 min/side.",
+        "Steam broccoli until tender-crisp.",
+        "Sauté garlic briefly; toss with rice.",
+        "Slice chicken, assemble bowls."
+      ],
+      equipment:["12\" skillet","Steamer basket","Saucepan"]
+    }},
+    tuesday:   { id:"tuesday",   title:"Team Dinner (out)",  recipe:{ summary:"No home cook" } },
+    wednesday: { id:"wednesday", title:"Swim Night (out)",    recipe:{ summary:"No home cook" } },
+    thursday:  { id:"thursday",  title:"Ground Beef Pasta",   recipe:{
+      title:"Ground Beef Pasta with Quick Homemade Marinara",
+      summary:"Weeknight beef pasta with a simple crushed-tomato marinara.",
+      yield:"Serves 4",
+      prepTime:"10 min", cookTime:"30–35 min",
+      ingredients:[
+        { section:"Pasta", items:[
+          "12 oz penne",
+          "Kosher salt for pasta water"
+        ]},
+        { section:"Marinara", items:[
           "2 tbsp olive oil",
-          "Salt & black pepper",
-          "Parmesan cheese and chopped herbs for garnish (optional)"
-        ],
-        "steps": [
-          "Boil salted water and cook pasta according to package directions.",
-          "Meanwhile, heat olive oil in a skillet. Add garlic and sauté 30 seconds. Add ground beef and cook until browned; season with salt, pepper, and Italian seasoning.",
-          "Add tomato sauce and simmer for 10 minutes.",
-          "Drain pasta and toss with sauce. Garnish with Parmesan and herbs."
-        ]
-      }
+          "1 small onion, finely diced",
+          "4 cloves garlic, minced",
+          "1/2 tsp red pepper flakes (optional)",
+          "1 (28 oz) can crushed tomatoes",
+          "1 tsp sugar (to balance acidity)",
+          "1 tsp dried oregano",
+          "1 tsp dried basil (or a few fresh sprigs)",
+          "Salt & pepper, to taste"
+        ]},
+        { section:"Beef", items:[
+          "1 lb ground beef (85–90%)"
+        ]},
+        { section:"Finish", items:[
+          "1/2 cup pasta water, as needed",
+          "Grated Parmesan, to serve",
+          "Fresh basil, to serve"
+        ]}
+      ],
+      steps:[
+        { text:"Boil pasta in well-salted water until al dente. Reserve 1/2 cup pasta water; drain.", time:"10–11 min" },
+        { text:"Sauce: heat oil, soften onion with a pinch of salt until translucent.", time:"5–6 min" },
+        { text:"Add garlic and red pepper flakes; cook just until fragrant.", time:"30–45 sec" },
+        { text:"Stir in crushed tomatoes, sugar, oregano, basil; simmer uncovered until slightly thickened.", time:"12–15 min" },
+        { text:"In a separate pan, brown beef; season with salt and pepper. Drain excess fat.", time:"8–10 min" },
+        { text:"Combine beef with marinara. Loosen with pasta water if needed. Toss with pasta.", time:"2–3 min" },
+        { text:"Serve with Parmesan and basil." }
+      ],
+      equipment:["12\" skillet","Saucepan","Stock pot","Colander"]
+    }},
+    friday:    { id:"friday",    title:"Out of Town",         recipe:null },
+    saturday:  { id:"saturday",  title:"Out of Town",         recipe:null }
+  },
+
+  // DAILY FUEL — Breakfast / Lunch / Snacks for Mom (breastfeeding)
+  // Targets: simple whole-food choices, low effort; ~2,150–2,350 kcal/day; 95–120 g protein/day
+  momDaily: {
+    sunday: {
+      breakfast: "Overnight oats (milk, oats, chia) + mixed berries",
+      lunch: "Leftover chicken & broccoli bowl",
+      snackAM: "2 boiled eggs + cucumber sticks",
+      snackPM: "Apple + 2 tbsp peanut butter",
+      kcalEstimate: 2200, proteinEstimate: "100–120 g",
+      notes: "Hydrate; add ground flax to oats for ALA."
     },
-    
-    "friday": {
-      "title": "No meal planned"
+    monday: {
+      breakfast: "SEC sandwich (whole-wheat English muffin, egg, cheddar, breakfast sausage) — sandwich maker",
+      lunch: "Turkey & spinach wrap + avocado; side carrots",
+      snackAM: "Cottage cheese (3/4 cup) + pineapple",
+      snackPM: "Trail mix + string cheese",
+      kcalEstimate: 2250, proteinEstimate: "100–120 g",
+      notes: "Use iodized salt; prep 2 extra SEC patties for later."
     },
-    
-    "saturday": {
-      "title": "No meal planned"
+    tuesday: {
+      breakfast: "SEC sandwich (whole-wheat English muffin)",
+      lunch: "Greek yogurt bowl + granola + berries",
+      snackAM: "Hummus + baby carrots",
+      snackPM: "Banana + roasted almonds",
+      kcalEstimate: 2150, proteinEstimate: "95–115 g",
+      notes: "Team dinner out — keep lunch lighter."
+    },
+    wednesday: {
+      breakfast: "Quinoa cup + rotisserie chicken + olive oil drizzle",
+      lunch: "Tuna salad on whole-grain crackers; side grapes",
+      snackAM: "2 boiled eggs + bell pepper slices",
+      snackPM: "Crackers + cheddar slices",
+      kcalEstimate: 2200, proteinEstimate: "100–120 g",
+      notes: "Swim night; keep dinner plan light."
+    },
+    thursday: {
+      breakfast: "SEC sandwich (whole-wheat English muffin)",
+      lunch: "Leftover pasta + side salad (olive oil + balsamic)",
+      snackAM: "Orange + pistachios",
+      snackPM: "Greek yogurt + honey",
+      kcalEstimate: 2300, proteinEstimate: "100–120 g",
+      notes: "Higher-energy day; pasta lunch ok."
+    },
+    friday: {
+      breakfast: "SEC sandwich (whole-wheat English muffin)",
+      lunch: "Deli chicken bowl (microwave rice cup + chicken + salsa)",
+      snackAM: "Pear + walnuts",
+      snackPM: "Popcorn + kefir",
+      kcalEstimate: 2200, proteinEstimate: "95–115 g",
+      notes: "Pack snacks if out of town later."
+    },
+    saturday: {
+      breakfast: "French toast (omega-3 eggs) + berries + maple",
+      lunch: "Rotisserie chicken & avocado sandwich (whole-grain)",
+      snackAM: "Smoothie (milk, oats, frozen berries, flax)",
+      snackPM: "Veg sticks + ranch",
+      kcalEstimate: 2350, proteinEstimate: "100–120 g",
+      notes: "Relaxed day; emphasize hydration."
     }
   },
-  
-  // ADDED: momDaily structure for Daily Fuel sections
-  "momDaily": {
-    "sunday": {
-      "breakfast": "TBD",
-      "lunch": "TBD",
-      "snackAM": "TBD",
-      "snackPM": "TBD",
-      "kcalEstimate": "1600",
-      "proteinEstimate": "80g",
-      "notes": ""
-    },
-    "monday": {
-      "breakfast": "TBD",
-      "lunch": "TBD",
-      "snackAM": "TBD",
-      "snackPM": "TBD",
-      "kcalEstimate": "1600",
-      "proteinEstimate": "80g",
-      "notes": ""
-    },
-    "tuesday": {
-      "breakfast": "TBD",
-      "lunch": "TBD",
-      "snackAM": "TBD",
-      "snackPM": "TBD",
-      "kcalEstimate": "1600",
-      "proteinEstimate": "80g",
-      "notes": ""
-    },
-    "wednesday": {
-      "breakfast": "TBD",
-      "lunch": "TBD",
-      "snackAM": "TBD",
-      "snackPM": "TBD",
-      "kcalEstimate": "1600",
-      "proteinEstimate": "80g",
-      "notes": ""
-    },
-    "thursday": {
-      "breakfast": "TBD",
-      "lunch": "TBD",
-      "snackAM": "TBD",
-      "snackPM": "TBD",
-      "kcalEstimate": "1600",
-      "proteinEstimate": "80g",
-      "notes": ""
-    },
-    "friday": {
-      "breakfast": "TBD",
-      "lunch": "TBD",
-      "snackAM": "TBD",
-      "snackPM": "TBD",
-      "kcalEstimate": "1600",
-      "proteinEstimate": "80g",
-      "notes": ""
-    },
-    "saturday": {
-      "breakfast": "TBD",
-      "lunch": "TBD",
-      "snackAM": "TBD",
-      "snackPM": "TBD",
-      "kcalEstimate": "1600",
-      "proteinEstimate": "80g",
-      "notes": ""
+
+  // Shopping reflects Daily Fuel adds (dairy/eggs, produce, grains, pantry, deli)
+  shopping: {
+    "🛒 Consolidated Shopping List": {
+      lists: {
+        "Dairy & Eggs": [
+          { text: "Eggs, 2 dozen", checked: false },
+          { text: "Cheddar slices", checked: false },
+          { text: "Cottage cheese (24–32 oz)", checked: false },
+          { text: "Greek yogurt, 32 oz (plain)", checked: false },
+          { text: "Milk (for oats/smoothies)", checked: false },
+          { text: "Parmesan wedge", checked: false }
+        ],
+        "Produce": [
+          { text: "Berries (2–3 clamshells)", checked: false },
+          { text: "Bananas (7)", checked: false },
+          { text: "Apples (4)", checked: false },
+          { text: "Oranges (4)", checked: false },
+          { text: "Grapes (1 bag)", checked: false },
+          { text: "Avocados (3)", checked: false },
+          { text: "Baby carrots (2 bags)", checked: false },
+          { text: "Cucumbers (2)", checked: false },
+          { text: "Bell peppers (3)", checked: false },
+          { text: "Spinach (1 large clamshell)", checked: false },
+          { text: "Fresh basil (optional)", checked: false },
+          { text: "Onion + garlic", checked: false }
+        ],
+        "Bakery & Grains": [
+          { text: "Whole-wheat English muffins (2 packs)", checked: false },
+          { text: "Whole-grain wraps", checked: false },
+          { text: "Sandwich bread (whole-grain)", checked: false },
+          { text: "Granola", checked: false },
+          { text: "Old-fashioned oats", checked: false },
+          { text: "Microwave quinoa/rice cups", checked: false },
+          { text: "Penne (12 oz)", checked: false },
+          { text: "Crackers (whole-grain)", checked: false },
+          { text: "Popcorn kernels or bags", checked: false }
+        ],
+        "Meat & Deli": [
+          { text: "Breakfast sausage patties", checked: false },
+          { text: "Deli turkey", checked: false },
+          { text: "Rotisserie chicken (1–2)", checked: false },
+          { text: "Ground beef (1 lb, 85–90%)", checked: false },
+          { text: "Chicken thighs (1 lb)", checked: false }
+        ],
+        "Pantry": [
+          { text: "Peanut butter", checked: false },
+          { text: "Almonds & pistachios", checked: false },
+          { text: "Hummus", checked: false },
+          { text: "Honey & maple syrup", checked: false },
+          { text: "Olive oil, salt (iodized), pepper", checked: false },
+          { text: "Crushed tomatoes (28 oz)", checked: false },
+          { text: "Oregano, basil, red pepper flakes", checked: false },
+          { text: "Sugar (for marinara acidity balance)", checked: false }
+        ]
+      }
     }
+  },
+
+  // Simple Sunday prep to reduce weekday friction
+  prep: {
+    ingredients: [
+      "12 eggs (for boiling)",
+      "Breakfast sausage patties (cook ahead)",
+      "Overnight oats jars (3)",
+      "Veg sticks (carrot, cucumber, bell pepper)",
+      "Wash/portion berries (3 containers)"
+    ],
+    steps: [
+      "Boil a dozen eggs; peel 6 for early-week snacks; store the rest in shell.",
+      "Cook a batch of breakfast sausage patties; chill for quick SEC assembly.",
+      "Assemble 3 jars overnight oats (oats, milk, chia/ground flax).",
+      "Cut carrot/cucumber/bell pepper sticks; store in sealed containers.",
+      "Wash & portion berries for quick yogurt bowls/snacks."
+    ]
   }
 };
