@@ -31,18 +31,41 @@
   <script>
     function renderShoppingList() {
       const host = document.querySelector('#list');
-      // Fixed: Only use the correct path to shopping data
-      const s = window.planData.shopping && window.planData.shopping["🛒 Consolidated Shopping List"];
+      
+      // Debug logging
+      console.log('planData:', window.planData);
+      console.log('planData.shopping:', window.planData?.shopping);
+      
+      // Get shopping data - simplified and more direct
+      const s = window.planData?.shopping?.["🛒 Consolidated Shopping List"];
+      
+      console.log('Shopping list data:', s);
 
       if(!s){
         host.innerHTML = '<p class="muted">No shopping items yet. When the generator adds Daily Fuel groceries, they will appear here automatically.</p>';
-      }else{
-        const cats = s.lists || {};
-        host.innerHTML = Object.keys(cats).map(cat=>{
-          const items = cats[cat] || [];
-          return `<div class="card"><h3>${cat}</h3>${items.length? '<ul>'+items.map(i=> `<li>${i.text}</li>`).join('')+'</ul>' : '<p class="muted">No items</p>'}</div>`;
-        }).join('');
+        return;
       }
+
+      const cats = s.lists || {};
+      console.log('Categories:', cats);
+      
+      // Build HTML with better error handling
+      const html = Object.keys(cats).map(cat => {
+        const items = cats[cat] || [];
+        console.log(`Category "${cat}":`, items);
+        
+        const itemsHTML = items.length 
+          ? '<ul>' + items.map(item => {
+              // Handle both object and string formats
+              const text = typeof item === 'string' ? item : (item?.text || 'undefined');
+              return `<li>${text}</li>`;
+            }).join('') + '</ul>'
+          : '<p class="muted">No items</p>';
+        
+        return `<div class="card"><h3>${cat}</h3>${itemsHTML}</div>`;
+      }).join('');
+      
+      host.innerHTML = html;
     }
     
     // Wait for plan data to be loaded
