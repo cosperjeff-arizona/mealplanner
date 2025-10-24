@@ -37,7 +37,7 @@ const planData = {
           "Salt & pepper"
         ],
         steps: [
-          "Combine all ingredients in a greased 9x13" + '"' + " dish.",
+          "Combine all ingredients in a greased 9x13\" dish.",
           "Cover tightly with foil; bake 45–50 min at 375°F.",
           "Remove cover for last 10 min to brown slightly."
         ],
@@ -111,7 +111,7 @@ const planData = {
           "Add garlic and veggies; stir-fry until tender.",
           "Add soy sauce; serve over rice."
         ],
-        equipment: ["12" + '"' + " skillet", "Rice cooker"]
+        equipment: ["12\" skillet", "Rice cooker"]
       }
     },
     friday: {
@@ -157,7 +157,7 @@ const planData = {
           "Top with cheese and cover briefly.",
           "Assemble burgers and serve."
         ],
-        equipment: ["12" + '"' + " skillet", "Oven"]
+        equipment: ["12\" skillet", "Oven"]
       }
     }
   },
@@ -175,11 +175,59 @@ const planData = {
   shopping: {
     "🛒 Consolidated Shopping List": {
       lists: {
-        "Dairy & Eggs": ["Eggs", "Cheddar", "Cottage cheese", "Milk", "Greek yogurt", "Parmesan"],
-        "Produce": ["Onion", "Garlic", "Spinach", "Mushrooms", "Broccoli", "Sweet potatoes", "Berries", "Apples", "Bananas", "Oranges", "Avocados", "Carrots", "Cucumbers", "Bell peppers", "Limes"],
-        "Bakery & Grains": ["Burger buns", "Whole-wheat English muffins", "Sandwich bread", "Wraps", "Rice", "Pasta"],
-        "Meat & Deli": ["Chicken thighs", "Pork chops", "Ground beef", "Deli turkey", "Rotisserie chicken"],
-        "Pantry": ["Chicken broth", "Crushed tomatoes", "Black beans", "Corn", "Alfredo sauce", "Soy sauce", "Olive oil", "Peanut butter", "Honey", "Spices (chili, cumin, thyme)", "Trail mix", "Lactation bites", "Premier Protein shakes"]
+        "Dairy & Eggs": [
+          { text: "Eggs, 2 dozen", checked: false },
+          { text: "Cheddar slices", checked: false },
+          { text: "Cottage cheese (24–32 oz)", checked: false },
+          { text: "Milk (for oats/smoothies)", checked: false },
+          { text: "Greek yogurt, 32 oz (plain)", checked: false },
+          { text: "Parmesan wedge", checked: false }
+        ],
+        "Produce": [
+          { text: "Berries (2–3 clamshells)", checked: false },
+          { text: "Bananas (6–7)", checked: false },
+          { text: "Apples (4)", checked: false },
+          { text: "Oranges (4)", checked: false },
+          { text: "Avocados (3)", checked: false },
+          { text: "Baby carrots (2 bags)", checked: false },
+          { text: "Cucumbers (2)", checked: false },
+          { text: "Bell peppers (3)", checked: false },
+          { text: "Spinach (1 large clamshell)", checked: false },
+          { text: "Broccoli florets (2–3 cups)", checked: false },
+          { text: "Sweet potatoes (2)", checked: false },
+          { text: "Onion + garlic", checked: false },
+          { text: "Limes (2)", checked: false }
+        ],
+        "Bakery & Grains": [
+          { text: "Whole-wheat English muffins (2 packs)", checked: false },
+          { text: "Sandwich bread (whole-grain)", checked: false },
+          { text: "Whole-grain wraps", checked: false },
+          { text: "Rice (long grain or jasmine)", checked: false },
+          { text: "Pasta (penne)", checked: false },
+          { text: "Burger buns", checked: false }
+        ],
+        "Meat & Deli": [
+          { text: "Chicken thighs (2 lbs total)", checked: false },
+          { text: "Pork chops (2)", checked: false },
+          { text: "Ground beef (1 lb, 85/15)", checked: false },
+          { text: "Deli turkey", checked: false },
+          { text: "Rotisserie chicken (1)", checked: false }
+        ],
+        "Pantry": [
+          { text: "Chicken broth (have 1; add 1 extra carton)", checked: false },
+          { text: "Crushed tomatoes (28 oz)", checked: false },
+          { text: "Black beans (1 can)", checked: false },
+          { text: "Corn (1 can or frozen)", checked: false },
+          { text: "Alfredo sauce (1 jar)", checked: false },
+          { text: "Soy sauce", checked: false },
+          { text: "Olive oil", checked: false },
+          { text: "Peanut butter", checked: false },
+          { text: "Honey & maple syrup", checked: false },
+          { text: "Spices: chili powder, cumin, thyme", checked: false },
+          { text: "Trail mix", checked: false },
+          { text: "Lactation bites (on hand)", checked: false },
+          { text: "Premier Protein shakes (on hand)", checked: false }
+        ]
       }
     }
   },
