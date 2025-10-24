@@ -32,14 +32,8 @@
     function renderShoppingList() {
       const host = document.querySelector('#list');
       
-      // Debug logging
-      console.log('planData:', window.planData);
-      console.log('planData.shopping:', window.planData?.shopping);
-      
-      // Get shopping data - simplified and more direct
+      // Get shopping data
       const s = window.planData?.shopping?.["🛒 Consolidated Shopping List"];
-      
-      console.log('Shopping list data:', s);
 
       if(!s){
         host.innerHTML = '<p class="muted">No shopping items yet. When the generator adds Daily Fuel groceries, they will appear here automatically.</p>';
@@ -47,16 +41,14 @@
       }
 
       const cats = s.lists || {};
-      console.log('Categories:', cats);
       
-      // Build HTML with better error handling
+      // Build HTML - handles both string and object formats
       const html = Object.keys(cats).map(cat => {
         const items = cats[cat] || [];
-        console.log(`Category "${cat}":`, items);
         
         const itemsHTML = items.length 
           ? '<ul>' + items.map(item => {
-              // Handle both object and string formats
+              // Handle both formats: strings and {text, checked} objects
               const text = typeof item === 'string' ? item : (item?.text || 'undefined');
               return `<li>${text}</li>`;
             }).join('') + '</ul>'
